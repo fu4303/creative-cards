@@ -1,9 +1,14 @@
 <template>
-  <div>hi</div>
+  <div>
+    <card-front></card-front>
+  </div>
 </template>
 
 <script>
-export default {};
+import CardFront from "./CardFront";
+export default {
+  components: { cardFront: CardFront },
+};
 </script>
 
 <style></style>
