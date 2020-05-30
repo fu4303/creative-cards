@@ -2,7 +2,6 @@
   <div>
     <h4>Edit Text:</h4>
     <textarea
-      class="form-control"
       rows="4"
       cols="50"
       placeholder="Add text here!"
