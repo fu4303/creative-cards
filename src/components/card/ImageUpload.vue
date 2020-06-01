@@ -12,8 +12,8 @@
     <br />
 
     <button type="button" id="setImageButton" style="display:none">
-      Set Image
-    </button>
+      Set Image</button
+    >{{ file }}
   </div>
 </template>
 
@@ -26,7 +26,8 @@ export default {
     };
   },
   methods: {
-    //   store in web storage until uploaded?
+    //   store in web storage/index db the create PDF/image?
+    // allow user to set image and text areas by clickin on to create?
     uploadFile(event) {
       const reader = new FileReader();
       reader.onload = function() {
@@ -38,6 +39,7 @@ export default {
           "There was a problem uploading your image, please try again";
       };
       reader.readAsDataURL(event.target.files[0]);
+      console.log(reader);
 
       // removes set image button each time the user click on image upload input so it can not be set before upoad
       // document.getElementById('setImageButton').style.display = 'none';
