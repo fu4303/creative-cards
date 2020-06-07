@@ -1,18 +1,20 @@
 <template>
   <div>
     <app-header></app-header>
+    <app-home></app-home>
     <CardWrapper></CardWrapper>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header";
+import AppHeader from "./components/AppHeader";
+import AppHome from "./pages/AppHome";
 import CardWrapper from "./components/card/CardWrapper";
 
 export default {
-  components: { appHeader: Header, CardWrapper },
+  components: { AppHeader, CardWrapper, AppHome },
   data() {
     return {};
-  },
+  }
 };
 </script>

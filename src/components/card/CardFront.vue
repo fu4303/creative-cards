@@ -3,23 +3,18 @@
     2. When selected, place card into local storage
     3. Generate card from local storage
     4. Update local storage with changes
--->
+  -->
   <div class="section_wrapper">
     <div v-for="card in cards" :key="card.id" class="card_wrapper">
       <div>
         <div v-for="(component, key) in card.sections[0].components" :key="key">
-          <component
-            :is="component"
-            :key="card.sections[0].components"
-          ></component>
+          <component :is="component" :key="card.sections[0].components"></component>
         </div>
       </div>
       <div>
         <div v-for="(values, key) in card.sections[0].defaultValues" :key="key">
           <!-- add initial default spacing to be equal, or set on object? -->
-          <article>
-            {{ values }}
-          </article>
+          <article>{{ values }}</article>
         </div>
       </div>
     </div>
@@ -27,6 +22,8 @@
 </template>
 
 <script>
+import { cards } from "../../data";
+
 import TextInput from "./TextInput.vue";
 // import TextOutput from "./TextOutput.vue";
 import ImageUpload from "./ImageUpload.vue";
@@ -35,32 +32,14 @@ import ImageUpload from "./ImageUpload.vue";
 export default {
   data: function() {
     return {
-      cards: [
-        {
-          id: 1,
-          name: "Birthday 1",
-          sections: [
-            {
-              background: ["text.jpg"],
-              components: ["TextInput", "ImageUpload", "TextInput"],
-              // change values to object and include height etc?
-              defaultValues: ["happy birthday", "test.jpg", "30 today"],
-            },
-            {
-              background: ["text.jpg"],
-              components: ["TextInput", "ImageUpload"],
-              defaultValues: ["wow", "test.jpg", "300"],
-            },
-          ],
-        },
-      ],
+      cards,
       textBoxValue1: "",
       textBoxValue2: "",
       textBoxValue3: "",
-      imageName: "",
+      imageName: ""
     };
   },
-  components: { TextInput, ImageUpload },
+  components: { TextInput, ImageUpload }
 };
 </script>
 
