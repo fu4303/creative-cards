@@ -18,7 +18,7 @@ export const cards = [
           "https://cdn.pixabay.com/photo/2020/05/31/02/55/sunset-5241031_1280.jpg",
         ],
         components: ["TextInput", "ImageUpload", "TextInput"],
-        defaultValues: ["happy birthdayyyyyy", "test.jpg", "30 today"],
+        defaultValues: ["happy birthdayyyyyy1", "test.jpg", "30 today"],
       },
       {
         background: ["text.jpg"],
@@ -37,7 +37,7 @@ export const cards = [
           "https://cdn.pixabay.com/photo/2020/05/28/14/14/love-5231372_1280.jpg",
         ],
         components: ["TextInput", "ImageUpload", "TextInput"],
-        defaultValues: ["happy birthdayyyyyy", "test.jpg", "30 today"],
+        defaultValues: ["happy birthdayyyyyy2", "test.jpg", "30 today"],
       },
       {
         background: ["text.jpg"],
@@ -56,7 +56,7 @@ export const cards = [
           "https://cdn.pixabay.com/photo/2020/06/05/09/28/sunset-5262335_1280.jpg",
         ],
         components: ["TextInput", "ImageUpload", "TextInput"],
-        defaultValues: ["happy birthdayyyyyy", "test.jpg", "30 today"],
+        defaultValues: ["anniversary 1", "test.jpg", "30 today"],
       },
       {
         background: ["text.jpg"],
