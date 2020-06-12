@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  props: ["data"],
   data() {
     return {
       textBoxInput: ""
@@ -20,7 +21,7 @@ export default {
   },
   methods: {
     textChanged() {
-      this.$emit("displayTextChanged", this.textBoxInput);
+      this.$emit("data", this.textBoxInput);
     }
   }
 };

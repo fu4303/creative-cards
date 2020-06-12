@@ -26,7 +26,6 @@ export default {
     const card = cards.filter(card => card.id === 2);
     // destructure to remove item from array
     [this.currentCard] = card;
-    localStorage.setItem("card", JSON.stringify(this.currentCard));
   }
 };
 </script>

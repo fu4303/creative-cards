@@ -7,43 +7,41 @@
   <div class="section_wrapper">
     <div class="card_wrapper">
       <!-- left -->
-      <!-- {{cardFromStorage}} -->
-      <div v-for="component in cardFromStorage.sections[0].components" :key="component.id">
-        <component :is="component" :key="card"></component>
+      <div v-for="component in card.sections[0].components" :key="component.id">
+        <component :is="component" :key="card" @data="textInput2 = $event"></component>
       </div>
       <hr />
     </div>
     <!-- right -->
     <div :style="`border: 1px solid; background: url(${card.sections[0].background})`">
-      <div v-for="(values, key) in card.sections[0].defaultValues" :key="key">
-        <!-- add initial default spacing to be equal, or set on object? -->
-        <article>{{ values }}</article>
-      </div>
+      <text-output :displayText="textInput1"></text-output>
+      <text-output :displayText="textInput2"></text-output>
     </div>
   </div>
 </template>
 
 <script>
 import TextInput from "./TextInput.vue";
-// import TextOutput from "./TextOutput.vue";
+import TextOutput from "./TextOutput.vue";
 import ImageUpload from "./ImageUpload.vue";
 // import ImageOutput from "./ImageOutput.vue";
 
 export default {
   props: ["card"],
-  beforeMount() {
-    this.cardFromStorage = JSON.parse(localStorage.getItem("card"));
+  mounted() {
+    // set data properties based off components name and index eg.TextInput1
+    // generate dynamic components
   },
+
   data() {
     return {
-      textBoxValue1: "",
-      textBoxValue2: "",
-      textBoxValue3: "",
+      textInput1: "",
+      textInput2: "",
       imageName: "",
       cardFromStorage: ""
     };
   },
-  components: { TextInput, ImageUpload }
+  components: { TextInput, ImageUpload, TextOutput }
 };
 </script>
 
