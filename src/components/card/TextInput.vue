@@ -13,15 +13,15 @@
 
 <script>
 export default {
-  data: function() {
+  data() {
     return {
-      textBoxInput: "",
+      textBoxInput: ""
     };
   },
   methods: {
-    textChanged: function() {
+    textChanged() {
       this.$emit("displayTextChanged", this.textBoxInput);
-    },
-  },
+    }
+  }
 };
 </script>

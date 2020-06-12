@@ -1,7 +1,11 @@
 <template>
   <div>
-    <!-- reset card button to restore to original -->
-    <card-front :card="currentCard[0]"></card-front>
+    <header>
+      <button>Reset Card</button>
+      <button>Save / Order / Download</button>
+    </header>
+    <card-front :card="currentCard"></card-front>
+    <!-- output card sections with dynamic slot? https://vuejs.org/v2/guide/components-slots.html#Dynamic-Slot-Names -->
   </div>
 </template>
 
@@ -19,7 +23,10 @@ export default {
   },
   mounted() {
     // set card from url params after setting up router
-    return (this.currentCard = cards.filter(card => card.id === 2));
+    const card = cards.filter(card => card.id === 2);
+    // destructure to remove item from array
+    [this.currentCard] = card;
+    localStorage.setItem("card", JSON.stringify(this.currentCard));
   }
 };
 </script>
