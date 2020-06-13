@@ -5,24 +5,26 @@
       rows="4"
       cols="50"
       placeholder="Add text here!"
-      v-model="textBoxInput"
+      v-model="state.textBoxInput"
       @keyup="textChanged"
     ></textarea>
   </div>
 </template>
 
 <script>
+import { reactive } from "vue";
 export default {
-  props: ["data"],
-  data() {
-    return {
-      textBoxInput: ""
-    };
-  },
-  methods: {
-    textChanged() {
-      this.$emit("data", this.textBoxInput);
+  emits: ["data"],
+  setup() {
+    let state = reactive({
+      textBoxInput: "",
+    });
+
+    function textChanged() {
+      this.$emit("data", state.textBoxInput);
     }
-  }
+
+    return { state, textChanged };
+  },
 };
 </script>

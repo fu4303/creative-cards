@@ -1,4 +1,5 @@
 <template>
+  <!-- change to model with teleport -->
   <div @mouseover="showOptions = true" @mouseleave="showOptions = false">
     <form v-show="showOptions">
       <label for="selectBox">Font size: </label>
