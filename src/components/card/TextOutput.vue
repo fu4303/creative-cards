@@ -2,7 +2,7 @@
   <!-- change to model with teleport -->
   <div @mouseover="showOptions = true" @mouseleave="showOptions = false">
     <form v-show="showOptions">
-      <label for="selectBox">Font size: </label>
+      <label for="selectBox">Font size:</label>
       <select id="selectBox" v-model="setFontSize">
         <option value="42">42px</option>
         <option value="48">48px</option>
@@ -42,17 +42,15 @@
     </form>
 
     <!-- :class - bold and em classes trigger when setBold & setItalic are true
-      (binded to checkbox which returns true/false) -->
-    <p :style="styleObject" :class="{ bold: setBold, italic: setItalic }">
-      {{ displayText }}
-    </p>
+    (binded to checkbox which returns true/false)-->
+    <p :style="styleObject" :class="{ bold: setBold, italic: setItalic }">{{ data }}</p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    displayText: [String, Number],
+    data: [String, Number],
     containerHeight: {
       type: Number,
       default: 200,

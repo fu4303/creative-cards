@@ -4,16 +4,18 @@
       <!-- left -->
       <section>
         <div>
-          <button @click="addSection('TextInput')">text</button>
-          <button @click="addSection('ImageUpload')">image</button>
+          <button @click="addSection('Text')">text</button>
+          <button @click="addSection('Image')">image</button>
         </div>
-        <div v-for="component in state.sections" :key="component.uniqueRef">
-          <component :is="component.name" @data="component.userInput = $event"></component>
+        <div v-for="section in state.sections" :key="section.uniqueRef">
+          <component :is="section.type+'Input'" @data="section.userInput = $event"></component>
         </div>
       </section>
       <!-- right -->
       <section>
-        <div v-for="item in state.sections" :key="item">{{item}}</div>
+        <div v-for="section in state.sections" :key="section.uniqueRef">
+          <component :is="section.type+'Output'" :data="section.userInput"></component>
+        </div>
       </section>
     </div>
   </div>
@@ -24,8 +26,13 @@ import { reactive } from "vue";
 
 import TextInput from "./TextInput.vue";
 import TextOutput from "./TextOutput.vue";
-import ImageUpload from "./ImageUpload.vue";
-// import ImageOutput from "./ImageOutput.vue";
+import ImageInput from "./ImageUpload.vue";
+import ImageOutput from "./ImageOutput.vue";
+
+// TODO / Ideas
+// Set order of components and allow to be rearranged (drag or up down arrows)
+// Animate in sections when adding
+// Remove section button
 
 export default {
   props: ["card"],
@@ -36,16 +43,16 @@ export default {
       sections: [],
     });
 
-    function getOccurrences(componentName) {
+    function getOccurrences(componentType) {
       var count = 0;
-      state.sections.forEach((v) => v.name === componentName && count++);
+      state.sections.forEach((v) => v.type === componentType && count++);
       return count;
     }
 
-    function addSection(name) {
+    function addSection(type) {
       state.sections.push({
-        name,
-        uniqueRef: `${name}${getOccurrences(name)}`,
+        type,
+        uniqueRef: `${type}${getOccurrences(type)}`,
         userInput: "",
       });
     }
@@ -53,7 +60,7 @@ export default {
     return { state, addSection };
   },
 
-  components: { TextInput, ImageUpload, TextOutput },
+  components: { TextInput, ImageInput, TextOutput, ImageOutput },
 };
 </script>
 

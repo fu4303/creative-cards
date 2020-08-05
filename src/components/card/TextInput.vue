@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4>Edit Text:{{value}}</h4>
+    <h4>Edit Text:</h4>
     <textarea
       rows="4"
       cols="50"
