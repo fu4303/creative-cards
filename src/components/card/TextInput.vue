@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4>Edit Text:</h4>
+    <h4>Edit Text:{{value}}</h4>
     <textarea
       rows="4"
       cols="50"
@@ -14,6 +14,7 @@
 <script>
 import { reactive } from "vue";
 export default {
+  props: ["value"],
   emits: ["data"],
   setup() {
     let state = reactive({
@@ -28,3 +29,5 @@ export default {
   },
 };
 </script>
+
+
