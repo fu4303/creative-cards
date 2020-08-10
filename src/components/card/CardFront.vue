@@ -50,7 +50,8 @@ export default {
   props: ["card"],
   setup(props) {
     let state = reactive({
-      sections: computed(() => props.card.sections),
+      // optional chaining for if no card template is supplied
+      sections: computed(() => props.card?.sections),
     });
 
     function getOccurrences(componentType) {
