@@ -33,6 +33,12 @@ import ImageOutput from "./ImageOutput.vue";
 // Set order of components and allow to be rearranged (drag or up down arrows)
 // Animate in sections when adding
 // Remove section button
+// User set heights of sections
+// Home page set up templates
+// Reset button
+// Download / save button
+// Router
+// Save image to show in output
 
 export default {
   props: ["card"],

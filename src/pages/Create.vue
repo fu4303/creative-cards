@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <header>
-      <button>Reset Card</button>
-      <button>Save / Order / Download</button>
-    </header>
-    <card-front :card="state.currentCard"></card-front>
-    <!-- output card sections with dynamic slot? https://vuejs.org/v2/guide/components-slots.html#Dynamic-Slot-Names -->
-  </div>
+  <header>
+    <button>Reset Card</button>
+    <button>Save / Order / Download</button>
+  </header>
+  <card-front :card="state.currentCard"></card-front>
+  <!-- output card sections with dynamic slot? https://vuejs.org/v2/guide/components-slots.html#Dynamic-Slot-Names -->
 </template>
 
 <script>
 import { reactive, onMounted } from "vue";
-import { cards } from "../../data";
+import { cards } from "../data";
 
-import CardFront from "./CardFront";
+import CardFront from "../components/card/CardFront";
 
 export default {
   components: { cardFront: CardFront },
