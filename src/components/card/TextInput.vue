@@ -4,7 +4,7 @@
     <textarea
       rows="4"
       cols="50"
-      placeholder="Add text here!"
+      :placeholder="defaultValue"
       v-model="state.textBoxInput"
       @keyup="textChanged"
     ></textarea>
@@ -14,11 +14,11 @@
 <script>
 import { reactive } from "vue";
 export default {
-  props: ["value"],
+  props: ["defaultValue"],
   emits: ["data"],
-  setup() {
+  setup(props) {
     let state = reactive({
-      textBoxInput: "",
+      textBoxInput: props.defaultValue,
     });
 
     function textChanged() {
@@ -29,5 +29,3 @@ export default {
   },
 };
 </script>
-
-

@@ -11,6 +11,7 @@
         <div v-for="section in state.sections" :key="section.uniqueRef">
           <component
             :is="section.type + 'Input'"
+            :defaultValue="section.userInput"
             @data="section.userInput = $event"
           ></component>
         </div>
