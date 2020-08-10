@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import AppHome from "../src/views/AppHome.vue";
 import Create from "../src/views/Create.vue";
 
+import CardFront from "../src/components/card/CardFront.vue";
+import CardInsideLeft from "../src/components/card/CardInsideLeft.vue";
+
 const routerHistory = createWebHistory();
 
 export const router = createRouter({
@@ -12,8 +15,16 @@ export const router = createRouter({
       component: AppHome,
     },
     {
-      path: "/create",
+      path: "/create/:id",
       component: Create,
+      children: [
+        { path: "/create/:id/front", name: "front", component: CardFront },
+        {
+          path: "/create/:id/inside-left",
+          name: "inside-left",
+          component: CardInsideLeft,
+        },
+      ],
     },
   ],
 });

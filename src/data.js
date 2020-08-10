@@ -14,16 +14,14 @@ export const cards = [
     categories: ["birthday", "husband"],
     sections: [
       {
-        background: [
-          "https://cdn.pixabay.com/photo/2020/05/31/02/55/sunset-5241031_1280.jpg",
-        ],
-        components: ["TextInput", "ImageUpload", "TextInput"],
-        defaultValues: ["happy birthdayyyyyy1", "test.jpg", "30 today"],
+        type: "Text",
+        uniqueRef: "Text1",
+        userInput: "happy birthdayyyyyy1",
       },
       {
-        background: ["text.jpg"],
-        components: ["TextInput", "ImageUpload"],
-        defaultValues: ["wow", "test.jpg", "300"],
+        type: "Text",
+        uniqueRef: "Text2",
+        userInput: "happy birthdayyyyyy2",
       },
     ],
   },
@@ -33,16 +31,14 @@ export const cards = [
     categories: ["birthday", "wife"],
     sections: [
       {
-        background: [
-          "https://cdn.pixabay.com/photo/2020/05/28/14/14/love-5231372_1280.jpg",
-        ],
-        components: ["TextInput", "ImageUpload", "TextInput"],
-        defaultValues: ["happy birthdayyyyyy2", "test.jpg", "30 today"],
+        type: "Text",
+        uniqueRef: "Text1",
+        userInput: "happy birthdayyyyyy1",
       },
       {
-        background: ["text.jpg"],
-        components: ["TextInput", "ImageUpload"],
-        defaultValues: ["wow", "test.jpg", "300"],
+        type: "Text",
+        uniqueRef: "Text2",
+        userInput: "happy birthdayyyyyy2",
       },
     ],
   },
@@ -52,16 +48,14 @@ export const cards = [
     categories: ["anniversary"],
     sections: [
       {
-        background: [
-          "https://cdn.pixabay.com/photo/2020/06/05/09/28/sunset-5262335_1280.jpg",
-        ],
-        components: ["TextInput", "ImageUpload", "TextInput"],
-        defaultValues: ["anniversary 1", "test.jpg", "30 today"],
+        type: "Image",
+        uniqueRef: "Image1",
+        userInput: "image.jpg",
       },
       {
-        background: ["text.jpg"],
-        components: ["TextInput", "ImageUpload"],
-        defaultValues: ["wow", "test.jpg", "300"],
+        type: "Text",
+        uniqueRef: "Text2",
+        userInput: "happy birthdayyyyyy2",
       },
     ],
   },

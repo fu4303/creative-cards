@@ -2,7 +2,9 @@
   <div class="section_wrapper">
     <div class="card_wrapper">
       <!-- left -->
-      card front
+      card inside left
+      {{ card }}
+
       <section>
         <div>
           <button @click="addSection('Text')">text</button>
@@ -29,7 +31,7 @@
 </template>
 
 <script>
-import { reactive, computed } from "vue";
+import { reactive } from "vue";
 
 import TextInput from "./TextInput.vue";
 import TextOutput from "./TextOutput.vue";
@@ -44,13 +46,16 @@ import ImageOutput from "./ImageOutput.vue";
 // Home page set up templates
 // Reset button
 // Download / save button
+// Router
 // Save image to show in output
 
 export default {
   props: ["card"],
-  setup(props) {
+  mounted() {},
+
+  setup() {
     let state = reactive({
-      sections: computed(() => props.card.sections),
+      sections: [],
     });
 
     function getOccurrences(componentType) {
