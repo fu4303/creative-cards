@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AppHome from "../src/pages/AppHome.vue";
-import Create from "../src/pages/Create.vue";
+import AppHome from "../src/views/AppHome.vue";
+import Create from "../src/views/Create.vue";
 
 const routerHistory = createWebHistory();
 
