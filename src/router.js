@@ -18,9 +18,9 @@ export const router = createRouter({
       path: "/create/:id",
       component: Create,
       children: [
-        { path: "/create/:id/front", name: "front", component: CardFront },
+        { path: "front", name: "front", component: CardFront },
         {
-          path: "/create/:id/inside-left",
+          path: "inside-left",
           name: "inside-left",
           component: CardInsideLeft,
         },

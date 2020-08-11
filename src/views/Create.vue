@@ -7,7 +7,6 @@
     <router-link to="front">Front</router-link>
     <router-link to="inside-left">Inside Left </router-link>
   </div>
-  <!-- <card-front :card="state.currentCard"></card-front> -->
   <router-view :templateSections="state.currentCard?.sections"></router-view>
   <!-- output card sections with dynamic slot? https://vuejs.org/v2/guide/components-slots.html#Dynamic-Slot-Names -->
 </template>

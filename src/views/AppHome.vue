@@ -6,10 +6,10 @@
     <hr />
     <ul v-for="card in filteredCards" :key="card.id">
       <li style="border: 1px solid;">
-        <a :href="`/create/${card.id}`">
+        <router-link :to="`/create/${card.id}/front`">
           <p>{{ card.name }}</p>
           <img :src="card.sections[0].background" />
-        </a>
+        </router-link>
       </li>
     </ul>
   </div>

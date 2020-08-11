@@ -60,7 +60,7 @@ export default {
     watch(() => {
       // props initially comes in as undefined
       state.sections = props.templateSections || [];
-      console.log(state.sections);
+      // console.log(state.sections);
     });
 
     function getOccurrences(componentType) {
