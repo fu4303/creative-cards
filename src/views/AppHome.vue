@@ -8,7 +8,7 @@
       <li style="border: 1px solid;">
         <router-link :to="`/create/${card.id}/front`">
           <p>{{ card.name }}</p>
-          <img :src="card.sections[0].background" />
+          <img :src="card.pages[0].background" />
         </router-link>
       </li>
     </ul>

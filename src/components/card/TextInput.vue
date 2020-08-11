@@ -4,7 +4,6 @@
     <textarea
       rows="4"
       cols="50"
-      :placeholder="defaultValue"
       v-model="state.textBoxInput"
       @keyup="textChanged"
     ></textarea>
@@ -12,13 +11,16 @@
 </template>
 
 <script>
-import { reactive } from "vue";
+import { reactive, watchEffect } from "vue";
 export default {
   props: ["defaultValue"],
   emits: ["data"],
   setup(props) {
-    let state = reactive({
-      textBoxInput: props.defaultValue,
+    let state = reactive({});
+
+    watchEffect(() => {
+      // update when new page is selected
+      state.textBoxInput = props.defaultValue;
     });
 
     function textChanged() {

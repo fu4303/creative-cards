@@ -12,16 +12,68 @@ export const cards = [
     id: 1,
     name: "Birthday 1",
     categories: ["birthday", "husband"],
-    sections: [
+    pages: [
       {
-        type: "Text",
-        uniqueRef: "Text1",
-        userInput: "happy birthdayyyyyy1",
+        name: "front",
+        background:
+          "https://cdn.pixabay.com/photo/2020/05/31/02/55/sunset-5241031_1280.jpg",
+        sections: [
+          {
+            type: "Text",
+            uniqueRef: "Text1",
+            userInput: "happy birthdayyyyyy1-p1",
+          },
+          {
+            type: "Text",
+            uniqueRef: "Text2",
+            userInput: "happy birthdayyyyyy2",
+          },
+        ],
       },
       {
-        type: "Text",
-        uniqueRef: "Text2",
-        userInput: "happy birthdayyyyyy2",
+        name: "inside-left",
+        sections: [
+          {
+            type: "Text",
+            uniqueRef: "Text1",
+            userInput: "happy birthdayyyyyy1p2",
+          },
+          {
+            type: "Image",
+            uniqueRef: "Image1",
+            userInput: "image.jpg",
+          },
+        ],
+      },
+      {
+        name: "inside-right",
+        sections: [
+          {
+            type: "Text",
+            uniqueRef: "Text1",
+            userInput: "happy birthdayyyyyy1p3",
+          },
+          {
+            type: "Image",
+            uniqueRef: "Image1",
+            userInput: "image.jpg",
+          },
+          {
+            type: "Text",
+            uniqueRef: "Text2",
+            userInput: "happy birthdayyyyyy2",
+          },
+        ],
+      },
+      {
+        name: "back",
+        sections: [
+          {
+            type: "Image",
+            uniqueRef: "Image1",
+            userInput: "image.jpg",
+          },
+        ],
       },
     ],
   },
@@ -29,16 +81,67 @@ export const cards = [
     id: 2,
     name: "Birthday 2",
     categories: ["birthday", "wife"],
-    sections: [
+    pages: [
       {
-        type: "Text",
-        uniqueRef: "Text1",
-        userInput: "happy birthdayyyyyy1",
+        name: "front",
+        background:
+          "https://cdn.pixabay.com/photo/2020/05/28/14/14/love-5231372_1280.jpg",
+        sections: [
+          {
+            type: "Image",
+            uniqueRef: "Image1",
+            userInput: "image.jpg",
+          },
+          {
+            type: "Text",
+            uniqueRef: "Text1",
+            userInput: "happy birthdayyyyyy2",
+          },
+        ],
       },
       {
-        type: "Text",
-        uniqueRef: "Text2",
-        userInput: "happy birthdayyyyyy2",
+        name: "inside-left",
+        sections: [
+          {
+            type: "Text",
+            uniqueRef: "Text1",
+            userInput: "happy birthdayyyyyy1",
+          },
+          {
+            type: "Text",
+            uniqueRef: "Text2",
+            userInput: "happy birthdayyyyyy2",
+          },
+        ],
+      },
+      {
+        name: "inside-right",
+        sections: [
+          {
+            type: "Text",
+            uniqueRef: "Text1",
+            userInput: "happy birthdayyyyyy1",
+          },
+          {
+            type: "Image",
+            uniqueRef: "Image1",
+            userInput: "image.jpg",
+          },
+        ],
+      },
+      {
+        name: "back",
+        sections: [
+          {
+            uniqueRef: "Text1",
+            userInput: "happy birthdayyyyyy1",
+          },
+          {
+            type: "Text",
+            uniqueRef: "Text2",
+            userInput: "happy birthdayyyyyy2",
+          },
+        ],
       },
     ],
   },
@@ -46,16 +149,68 @@ export const cards = [
     id: 3,
     name: "Anniversary 1",
     categories: ["anniversary"],
-    sections: [
+    pages: [
       {
-        type: "Image",
-        uniqueRef: "Image1",
-        userInput: "image.jpg",
+        name: "front",
+        background:
+          "https://cdn.pixabay.com/photo/2020/06/05/09/28/sunset-5262335_1280.jpg",
+        sections: [
+          {
+            type: "Image",
+            uniqueRef: "Image1",
+            userInput: "image.jpg",
+          },
+          {
+            type: "Image",
+            uniqueRef: "Image2",
+            userInput: "image.jpg",
+          },
+        ],
       },
       {
-        type: "Text",
-        uniqueRef: "Text2",
-        userInput: "happy birthdayyyyyy2",
+        name: "inside-left",
+        sections: [
+          {
+            type: "Text",
+            uniqueRef: "Text1",
+            userInput: "happy birthdayyyyyy1",
+          },
+          {
+            type: "Text",
+            uniqueRef: "Text2",
+            userInput: "happy birthdayyyyyy2",
+          },
+        ],
+      },
+      {
+        name: "inside-right",
+        sections: [
+          {
+            type: "Text",
+            uniqueRef: "Text1",
+            userInput: "happy birthdayyyyyy1",
+          },
+          {
+            type: "Text",
+            uniqueRef: "Text2",
+            userInput: "happy birthdayyyyyy2",
+          },
+        ],
+      },
+      {
+        name: "back",
+        sections: [
+          {
+            type: "Image",
+            uniqueRef: "Image1",
+            userInput: "image.jpg",
+          },
+          {
+            type: "Text",
+            uniqueRef: "Text1",
+            userInput: "happy birthdayyyyyy2",
+          },
+        ],
       },
     ],
   },
