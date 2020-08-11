@@ -16,8 +16,13 @@
         </div>
       </section>
       <!-- right -->
-      <section>
+      <section
+        :style="{
+          backgroundImage: `url(${page.background})`,
+        }"
+      >
         <div v-for="section in state.sections" :key="section.uniqueRef">
+          {{ section }}
           <component
             :is="section.type + 'Output'"
             :data="section.userInput"
@@ -48,7 +53,7 @@ import ImageOutput from "./ImageOutput.vue";
 
 export default {
   props: {
-    templateSections: Array,
+    page: Object,
   },
 
   setup(props) {
@@ -58,7 +63,7 @@ export default {
 
     watchEffect(() => {
       // props initially comes in as undefined
-      state.sections = props.templateSections || [];
+      state.sections = props.page.sections || [];
       // console.log(state.sections);
     });
 
