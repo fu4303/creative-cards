@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { reactive, watch } from "vue";
+import { reactive, watchEffect } from "vue";
 
 import TextInput from "./TextInput.vue";
 import TextOutput from "./TextOutput.vue";
@@ -57,10 +57,10 @@ export default {
       sections: [],
     });
 
-    watch(() => {
+    watchEffect(() => {
       // props initially comes in as undefined
       state.sections = props.templateSections || [];
-      // console.log(state.sections);
+      console.log(state.sections);
     });
 
     function getOccurrences(componentType) {
