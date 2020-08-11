@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { reactive, computed } from "vue";
+import { reactive, watch } from "vue";
 
 import TextInput from "./TextInput.vue";
 import TextOutput from "./TextOutput.vue";
@@ -48,25 +48,35 @@ import ImageOutput from "./ImageOutput.vue";
 // Save image to show in output
 
 export default {
-  props: ["card"],
+  props: {
+    templateSections: Array,
+  },
+
   setup(props) {
     let state = reactive({
-      // optional chaining for if no card template is supplied
-      sections: computed(() => props.card?.sections),
+      sections: [],
+    });
+
+    watch(() => {
+      // props initially comes in as undefined
+      state.sections = props.templateSections || [];
+      console.log(state.sections);
     });
 
     function getOccurrences(componentType) {
       var count = 0;
+      if (state.sections.length === 0) return 1;
       state.sections.forEach((v) => v.type === componentType && count++);
       return count;
     }
 
     function addSection(type) {
-      state.sections.push({
+      const newSection = {
         type,
         uniqueRef: `${type}${getOccurrences(type)}`,
         userInput: "",
-      });
+      };
+      state.sections.push(newSection);
     }
 
     return { state, addSection };

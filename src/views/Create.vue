@@ -8,7 +8,7 @@
     <router-link to="inside-left">Inside Left </router-link>
   </div>
   <!-- <card-front :card="state.currentCard"></card-front> -->
-  <router-view :card="state.currentCard"></router-view>
+  <router-view :templateSections="state.currentCard?.sections"></router-view>
   <!-- output card sections with dynamic slot? https://vuejs.org/v2/guide/components-slots.html#Dynamic-Slot-Names -->
 </template>
 
@@ -31,7 +31,7 @@ export default {
     // router guard if card not saved
 
     let state = reactive({
-      currentCard: "",
+      currentCard: {},
       cards,
     });
 
