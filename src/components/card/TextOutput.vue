@@ -1,6 +1,6 @@
 <template>
   <!-- change to model with teleport -->
-  <div @mouseover="showOptions = true" @mouseleave="showOptions = false">
+  <div @mouseover="showOptions = true" @mouseleave="showOptions = false" class="wrapper">
     <form v-show="showOptions">
       <label for="selectBox">Font size:</label>
       <select id="selectBox" v-model="setFontSize">
@@ -76,3 +76,5 @@ export default {
   },
 };
 </script>
+
+

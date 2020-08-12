@@ -2,30 +2,26 @@
   <div class="section_wrapper">
     <div class="card_wrapper">
       <!-- left -->
+      <section :style="{
+          backgroundImage: `url(${page.background})`,
+        }">
+        <div v-for="section in state.sections" :key="section.uniqueRef">
+          <component :is="section.type + 'Output'" :data="section.userInput"></component>
+        </div>
+      </section>
+      <!-- right -->
+      {{state.sections}}
       <section>
         <div>
           <button @click="addSection('Text')">text</button>
           <button @click="addSection('Image')">image</button>
         </div>
         <div v-for="section in state.sections" :key="section.uniqueRef">
+          <button @click="removeSection(section)">x</button>
           <component
             :is="section.type + 'Input'"
             :defaultValue="section.userInput"
             @data="section.userInput = $event"
-          ></component>
-        </div>
-      </section>
-      <!-- right -->
-      <section
-        :style="{
-          backgroundImage: `url(${page.background})`,
-        }"
-      >
-        <div v-for="section in state.sections" :key="section.uniqueRef">
-          {{ section }}
-          <component
-            :is="section.type + 'Output'"
-            :data="section.userInput"
           ></component>
         </div>
       </section>
@@ -42,7 +38,6 @@ import ImageInput from "./ImageUpload.vue";
 import ImageOutput from "./ImageOutput.vue";
 
 // TODO / Ideas
-// Set order of components and allow to be rearranged (drag or up down arrows)
 // Animate in sections when adding
 // Remove section button
 // User set heights of sections
@@ -83,7 +78,14 @@ export default {
       state.sections.push(newSection);
     }
 
-    return { state, addSection };
+    function removeSection(section) {
+      const indexPos = state.sections.findIndex(
+        (el) => el.uniqueRef === section.uniqueRef
+      );
+      state.sections.splice(indexPos, 1);
+    }
+
+    return { state, addSection, removeSection };
   },
 
   components: { TextInput, ImageInput, TextOutput, ImageOutput },
@@ -99,7 +101,6 @@ export default {
 }
 
 .section_wrapper div {
-  background: white;
   flex: 1;
   margin: 0 1rem;
 }
