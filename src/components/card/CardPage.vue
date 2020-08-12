@@ -6,7 +6,7 @@
           backgroundImage: `url(${page.background})`,
         }">
         <div v-for="section in state.page.sections" :key="section.uniqueRef">
-          <component :is="section.type + 'Output'" :data="section.userInput"></component>
+          <component :is="section.type + 'Output'" :section="section"></component>
         </div>
       </section>
       <!-- right -->
@@ -99,7 +99,7 @@ export default {
   display: flex;
   background: lightblue;
   padding: 1rem 0;
-  height: 80vh;
+  height: 600px;
 }
 
 .section_wrapper div {
