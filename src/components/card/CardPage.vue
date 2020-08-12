@@ -10,7 +10,6 @@
         </div>
       </section>
       <!-- right -->
-      {{state.page}}
       <section>
         <div>
           <button @click="addSection('Text')">text</button>
@@ -30,7 +29,7 @@
 </template>
 
 <script>
-import { reactive, watchEffect } from "vue";
+import { reactive, watchEffect, onMounted } from "vue";
 
 import TextInput from "./TextInput.vue";
 import TextOutput from "./TextOutput.vue";
@@ -45,8 +44,13 @@ export default {
   props: {
     page: Object,
   },
+  emits: ["page"],
 
-  setup(props) {
+  setup(props, context) {
+    onMounted(() => {
+      // emit page data to parent, this will also be binded for future updates to the page
+      context.emit("page", state.page);
+    });
     let state = reactive({
       page: {},
     });
@@ -79,7 +83,11 @@ export default {
       state.page.sections.splice(indexPos, 1);
     }
 
-    return { state, addSection, removeSection };
+    function syncPageWithParent() {
+      this.$emit("page", state.page);
+    }
+
+    return { state, addSection, removeSection, syncPageWithParent };
   },
 
   components: { TextInput, ImageInput, TextOutput, ImageOutput },

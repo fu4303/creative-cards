@@ -133,6 +133,7 @@ export const cards = [
         name: "back",
         sections: [
           {
+            type: "Text",
             uniqueRef: "Text1",
             userInput: "happy birthdayyyyyy1",
           },
