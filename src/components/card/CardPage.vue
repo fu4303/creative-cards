@@ -5,18 +5,18 @@
       <section :style="{
           backgroundImage: `url(${page.background})`,
         }">
-        <div v-for="section in state.sections" :key="section.uniqueRef">
+        <div v-for="section in state.page.sections" :key="section.uniqueRef">
           <component :is="section.type + 'Output'" :data="section.userInput"></component>
         </div>
       </section>
       <!-- right -->
-      {{state.sections}}
+      {{state.page}}
       <section>
         <div>
           <button @click="addSection('Text')">text</button>
           <button @click="addSection('Image')">image</button>
         </div>
-        <div v-for="section in state.sections" :key="section.uniqueRef">
+        <div v-for="section in state.page.sections" :key="section.uniqueRef">
           <button @click="removeSection(section)">x</button>
           <component
             :is="section.type + 'Input'"
@@ -39,12 +39,7 @@ import ImageOutput from "./ImageOutput.vue";
 
 // TODO / Ideas
 // Animate in sections when adding
-// Remove section button
 // User set heights of sections
-// Home page set up templates
-// Reset button
-// Download / save button
-// Save image to show in output
 
 export default {
   props: {
@@ -53,19 +48,18 @@ export default {
 
   setup(props) {
     let state = reactive({
-      sections: [],
+      page: {},
     });
 
     watchEffect(() => {
       // props initially comes in as undefined
-      state.sections = props.page.sections || [];
-      // console.log(state.sections);
+      state.page = props.page || {};
     });
 
     function getOccurrences(componentType) {
       var count = 0;
-      if (state.sections.length === 0) return 1;
-      state.sections.forEach((v) => v.type === componentType && count++);
+      if (state.page.sections.length === 0) return 1;
+      state.page.sections.forEach((v) => v.type === componentType && count++);
       return count;
     }
 
@@ -75,14 +69,14 @@ export default {
         uniqueRef: `${type}${getOccurrences(type)}`,
         userInput: "",
       };
-      state.sections.push(newSection);
+      state.page.sections.push(newSection);
     }
 
     function removeSection(section) {
-      const indexPos = state.sections.findIndex(
+      const indexPos = state.page.sections.findIndex(
         (el) => el.uniqueRef === section.uniqueRef
       );
-      state.sections.splice(indexPos, 1);
+      state.page.sections.splice(indexPos, 1);
     }
 
     return { state, addSection, removeSection };
