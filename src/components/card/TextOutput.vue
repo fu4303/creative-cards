@@ -1,14 +1,25 @@
 <template>
   <!-- change to model with teleport -->
-  <div @mouseover="showOptions = true" @mouseleave="showOptions = false" class="wrapper">
-    <form v-show="showOptions">
+  <div @mouseover="showOptions = true" @mouseout="showOptions = false">
+    <div class="menu" v-show="showOptions">
       <label for="selectBox">Font size:</label>
+      <!-- the color picker popup is separate so acts as our mouse leaving the menu, so we keep it open -->
+      <input type="color" @mouseleave="keepOpen" v-model="setColor" />
       <select id="selectBox" v-model="setFontSize">
         <option value="42">42px</option>
         <option value="48">48px</option>
         <option value="56">56px</option>
         <option value="64">64px</option>
       </select>
+
+      <label>
+        <input type="checkbox" v-model="setBold" />
+        Bold
+      </label>
+      <label>
+        <input type="checkbox" v-model="setItalic" />
+        Italic
+      </label>
       <label>
         <input type="radio" v-model="setTextAlign" value="left" />
         Left
@@ -22,29 +33,18 @@
         Right
       </label>
       <label>
-        <input type="checkbox" v-model="setBold" />
-        Bold
+        <input type="radio" v-model="setVerticalAlign" value="flex-start" />
+        Top
       </label>
       <label>
-        <input type="checkbox" v-model="setItalic" />
-        Italic
+        <input type="radio" v-model="setVerticalAlign" value="center" />
+        Middle
       </label>
-      <div>
-        <label>
-          <input type="radio" v-model="setVerticalAlign" value="flex-start" />
-          Top
-        </label>
-        <label>
-          <input type="radio" v-model="setVerticalAlign" value="center" />
-          Middle
-        </label>
-        <label>
-          <input type="radio" v-model="setVerticalAlign" value="flex-end" />
-          Bottom
-        </label>
-      </div>
-    </form>
-    {{setVerticalAlign}}
+      <label>
+        <input type="radio" v-model="setVerticalAlign" value="flex-end" />
+        Bottom
+      </label>
+    </div>
     <!-- :class - bold and em classes trigger when setBold & setItalic are true
     (binded to checkbox which returns true/false)-->
     <p :style="styleObject" :class="{ bold: setBold, italic: setItalic }">{{ section.userInput }}</p>
@@ -54,11 +54,7 @@
 <script>
 export default {
   props: {
-    section: [String, Number],
-    containerHeight: {
-      type: Number,
-      default: 200,
-    },
+    section: Object,
   },
   data() {
     return {
@@ -68,7 +64,13 @@ export default {
       setBold: false,
       setItalic: false,
       setVerticalAlign: "",
+      setColor: this.section.color,
     };
+  },
+  methods: {
+    keepOpen() {
+      this.showOptions = true;
+    },
   },
   computed: {
     styleObject() {
@@ -79,6 +81,7 @@ export default {
         verticalAlign: this.setVerticalAlign,
         display: "flex",
         alignItems: this.setVerticalAlign,
+        color: this.setColor,
       };
     },
   },
@@ -88,27 +91,20 @@ export default {
 
 <style scoped>
 p {
-  font-family: "Tangerine", cursive;
   font-size: 42px;
-  line-height: 42px;
-  text-shadow: 2px 2px 2px #aaa;
-  color: #4d4d4d;
   margin: 5px 0;
   border: 1px dotted grey;
   white-space: pre-line;
   overflow: hidden;
 }
 
-form {
+.menu {
   position: absolute;
+  background: turquoise;
   border-bottom: 1px dotted grey;
   margin-top: 10px;
   margin-left: 5px;
   padding-bottom: 5px;
-}
-
-select {
-  height: 40%;
 }
 
 .bold {
