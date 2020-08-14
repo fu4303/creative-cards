@@ -1,89 +1,90 @@
 <template>
   <!-- change to model with teleport -->
-  <div @mouseover="showOptions = true" @mouseout="showOptions = false">
-    <div class="menu" v-show="showOptions">
+  <div @mouseover="state.showOptions = true" @mouseout="state.showOptions = false">
+    <div class="menu" v-show="state.showOptions">
       <label for="selectBox">Font size:</label>
       <!-- the color picker popup is separate so acts as our mouse leaving the menu, so we keep it open -->
-      <input type="color" @mouseleave="keepOpen" v-model="setColor" />
-      <select id="selectBox" v-model="setFontSize">
-        <option value="42">42px</option>
-        <option value="48">48px</option>
-        <option value="56">56px</option>
-        <option value="64">64px</option>
+      <input type="color" @mouseleave="keepOpen" v-model="state.options.color" />
+      <select id="selectBox" v-model="state.options.fontSize">
+        <option value="42px">42px</option>
+        <option value="48px">48px</option>
+        <option value="56px">56px</option>
+        <option value="64px">64px</option>
       </select>
 
       <label>
-        <input type="checkbox" v-model="setBold" />
+        <input type="checkbox" v-model="state.isBold" />
         Bold
       </label>
       <label>
-        <input type="checkbox" v-model="setItalic" />
+        <input type="checkbox" v-model="state.isItalic" />
         Italic
       </label>
       <label>
-        <input type="radio" v-model="setTextAlign" value="left" />
+        <input type="radio" v-model="state.options.justifyContent" value="flex-start" />
         Left
       </label>
       <label>
-        <input type="radio" v-model="setTextAlign" value="center" />
+        <input type="radio" v-model="state.options.justifyContent" value="center" />
         Center
       </label>
       <label>
-        <input type="radio" v-model="setTextAlign" value="right" />
+        <input type="radio" v-model="state.options.justifyContent" value="flex-end" />
         Right
       </label>
       <label>
-        <input type="radio" v-model="setVerticalAlign" value="flex-start" />
+        <input type="radio" v-model="state.options.alignItems" value="flex-start" />
         Top
       </label>
       <label>
-        <input type="radio" v-model="setVerticalAlign" value="center" />
+        <input type="radio" v-model="state.options.alignItems" value="center" />
         Middle
       </label>
       <label>
-        <input type="radio" v-model="setVerticalAlign" value="flex-end" />
+        <input type="radio" v-model="state.options.alignItems" value="flex-end" />
         Bottom
       </label>
     </div>
     <!-- :class - bold and em classes trigger when setBold & setItalic are true
     (binded to checkbox which returns true/false)-->
-    <p :style="styleObject" :class="{ bold: setBold, italic: setItalic }">{{ section.userInput }}</p>
+    <p
+      :style="state.options"
+      :class="{ bold: state.isBold, italic: state.isItalic }"
+    >{{ section.userInput }}</p>
+    {{state.options}}
   </div>
 </template>
 
 <script>
+import { reactive } from "vue";
+
 export default {
   props: {
     section: Object,
   },
-  data() {
-    return {
+  setup(props) {
+    let state = reactive({
+      section: {},
+
       showOptions: false,
-      setTextAlign: "",
-      setFontSize: "",
-      setBold: false,
-      setItalic: false,
-      setVerticalAlign: "",
-      setColor: this.section.color,
-    };
-  },
-  methods: {
-    keepOpen() {
-      this.showOptions = true;
-    },
-  },
-  computed: {
-    styleObject() {
-      return {
-        textAlign: this.setTextAlign,
-        fontSize: this.setFontSize + "px",
-        height: this.section.height + "px",
-        verticalAlign: this.setVerticalAlign,
+      isBold: false,
+      isItalic: false,
+
+      options: {
+        fontSize: "",
+        height: props.section.height + "px",
         display: "flex",
-        alignItems: this.setVerticalAlign,
-        color: this.setColor,
-      };
-    },
+        alignItems: "",
+        justifyContent: "center",
+        color: props.section.color,
+      },
+    });
+
+    function keepOpen() {
+      state.showOptions = true;
+    }
+
+    return { state, keepOpen };
   },
 };
 </script>
