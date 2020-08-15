@@ -3,7 +3,6 @@
     <button>Reset Card</button>
     <button>Download</button>
   </header>
-  {{state.currentCard}}
   <div>
     <router-link to="front">Front</router-link>
     <router-link to="inside-left">Inside Left</router-link>

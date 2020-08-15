@@ -15,12 +15,12 @@
           <button @click="addSection('Text')">text</button>
           <button @click="addSection('Image')">image</button>
         </div>
-        <div v-for="section in state.page.sections" :key="section.uniqueRef">
+        <div v-for="(section, index) in state.page.sections" :key="section.uniqueRef">
           <button @click="removeSection(section)">x</button>
           <component
             :is="section.type + 'Input'"
-            :defaultValue="section.userInput"
-            @data="section.userInput = $event"
+            :section="section"
+            @section="state.page.section[index] = $event"
           ></component>
         </div>
       </section>
@@ -53,6 +53,7 @@ export default {
     });
     let state = reactive({
       page: {},
+      test: {},
     });
 
     watchEffect(() => {
@@ -83,11 +84,11 @@ export default {
       state.page.sections.splice(indexPos, 1);
     }
 
-    function syncPageWithParent() {
-      this.$emit("page", state.page);
-    }
+    // function syncWithParent() {
+    //   this.$emit("page", state.page);
+    // }
 
-    return { state, addSection, removeSection, syncPageWithParent };
+    return { state, addSection, removeSection };
   },
 
   components: { TextInput, ImageInput, TextOutput, ImageOutput },
