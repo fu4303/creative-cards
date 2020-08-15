@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{section}}
     <p
       :style="cssObject"
       :class="{ bold: section.isBold, italic: section.isItalic }"

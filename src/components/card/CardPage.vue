@@ -1,6 +1,7 @@
 <template>
   <div class="section_wrapper">
     <div class="card_wrapper">
+      {{state.page}}
       <!-- left -->
       <section :style="{
           backgroundImage: `url(${page.background})`,
