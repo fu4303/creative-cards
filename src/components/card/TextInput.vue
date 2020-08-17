@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{state.currentSection}}
     <div @mouseover="state.showOptions = true" @mouseout="state.showOptions = false">
       <h4>Edit Text:</h4>
       <textarea rows="4" cols="50" v-model="state.currentSection.userInput" @keyup="textChanged"></textarea>
@@ -118,8 +119,7 @@ export default {
 .menu {
   position: absolute;
   background: turquoise;
-  border-bottom: 1px dotted grey;
-  padding-bottom: 5px;
+  padding: 5px;
 }
 
 /* HIDE RADIO */

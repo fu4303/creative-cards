@@ -9,10 +9,12 @@
     <router-link to="inside-right">Inside Right</router-link>
     <router-link to="back">Back</router-link>
   </div>
+
   <card-page
     :page="state.currentCard.pages[getPageIndex()]"
     @page="state.currentCard.pages[getPageIndex()] = $event"
   ></card-page>
+
   <!-- output card sections with dynamic slot? https://vuejs.org/v2/guide/components-slots.html#Dynamic-Slot-Names -->
 </template>
 

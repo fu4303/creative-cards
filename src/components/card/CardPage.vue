@@ -36,7 +36,6 @@ import ImageOutput from "./ImageOutput.vue";
 
 // TODO / Ideas
 // Animate in sections when adding
-// User set heights of sections
 
 export default {
   props: {
@@ -60,8 +59,10 @@ export default {
 
     function getOccurrences(componentType) {
       var count = 0;
-      if (state.page.sections.length === 0) return 1;
-      state.page.sections.forEach((v) => v.type === componentType && count++);
+      // if (state.page.sections.length === 0) return 1;
+      state.page.sections.forEach(
+        (section) => section.type === componentType + count++
+      );
       return count;
     }
 
@@ -69,7 +70,7 @@ export default {
       const newSection = {
         type,
         uniqueRef: `${type}${getOccurrences(type)}`,
-        userInput: "",
+        userInput: type === "Text" ? "Enter your text here" : "",
       };
       state.page.sections.push(newSection);
     }
