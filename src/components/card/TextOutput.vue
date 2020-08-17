@@ -18,8 +18,8 @@ export default {
         display: "flex",
         fontSize: this.section.fontSize,
         height: this.section.height + "px",
-        alignItems: this.section.alignItems,
         justifyContent: this.section.justifyContent,
+        alignItems: this.section.alignItems,
         color: this.section.color,
       };
     },

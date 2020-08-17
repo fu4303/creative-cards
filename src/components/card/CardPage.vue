@@ -1,31 +1,28 @@
 <template>
-  <div class="section_wrapper">
-    <div class="card_wrapper">
-      {{state.page}}
-      <!-- left -->
-      <section :style="{
+  <div class="card_wrapper">
+    <!-- left -->
+    <section :style="{
           backgroundImage: `url(${page.background})`,
         }">
-        <div v-for="section in state.page.sections" :key="section.uniqueRef">
-          <component :is="section.type + 'Output'" :section="section"></component>
-        </div>
-      </section>
-      <!-- right -->
-      <section>
-        <div>
-          <button @click="addSection('Text')">text</button>
-          <button @click="addSection('Image')">image</button>
-        </div>
-        <div v-for="(section, index) in state.page.sections" :key="section.uniqueRef">
-          <button @click="removeSection(section)">x</button>
-          <component
-            :is="section.type + 'Input'"
-            :section="section"
-            @section="state.page.section[index] = $event"
-          ></component>
-        </div>
-      </section>
-    </div>
+      <div v-for="section in state.page.sections" :key="section.uniqueRef">
+        <component :is="section.type + 'Output'" :section="section"></component>
+      </div>
+    </section>
+    <!-- right -->
+    <section>
+      <div>
+        <button @click="addSection('Text')">text</button>
+        <button @click="addSection('Image')">image</button>
+      </div>
+      <div v-for="(section, index) in state.page.sections" :key="section.uniqueRef">
+        <button @click="removeSection(section)">x</button>
+        <component
+          :is="section.type + 'Input'"
+          :section="section"
+          @section="state.page.section[index] = $event"
+        ></component>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -54,7 +51,6 @@ export default {
     });
     let state = reactive({
       page: {},
-      test: {},
     });
 
     watchEffect(() => {
@@ -85,10 +81,6 @@ export default {
       state.page.sections.splice(indexPos, 1);
     }
 
-    // function syncWithParent() {
-    //   this.$emit("page", state.page);
-    // }
-
     return { state, addSection, removeSection };
   },
 
@@ -97,19 +89,12 @@ export default {
 </script>
 
 <style scoped>
-.section_wrapper {
-  display: flex;
-  background: lightblue;
-  padding: 1rem 0;
-  height: 600px;
-}
-
-.section_wrapper div {
-  flex: 1;
-  margin: 0 1rem;
-}
-
 .card_wrapper {
   display: flex;
+  justify-content: space-evenly;
+}
+.card_wrapper > section {
+  margin: 0 1rem;
+  width: 100%;
 }
 </style>

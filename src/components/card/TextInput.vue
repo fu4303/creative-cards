@@ -16,36 +16,66 @@
 
         <label>
           <input type="checkbox" v-model="state.currentSection.isBold" />
-          Bold
         </label>
         <label>
           <input type="checkbox" v-model="state.currentSection.isItalic" />
-          Italic
         </label>
-        <label>
-          <input type="radio" v-model="state.currentSection.justifyContent" value="flex-start" />
-          Left
-        </label>
-        <label>
-          <input type="radio" v-model="state.currentSection.justifyContent" value="center" />
-          Center
-        </label>
-        <label>
-          <input type="radio" v-model="state.currentSection.justifyContent" value="flex-end" />
-          Right
-        </label>
-        <label>
-          <input type="radio" v-model="state.currentSection.alignItems" value="flex-start" />
-          Top
-        </label>
-        <label>
-          <input type="radio" v-model="state.currentSection.alignItems" value="center" />
-          Middle
-        </label>
-        <label>
-          <input type="radio" v-model="state.currentSection.alignItems" value="flex-end" />
-          Bottom
-        </label>
+        <div>
+          <label>
+            <input
+              type="radio"
+              v-model="state.currentSection.justifyContent"
+              value="flex-start"
+              name="horizontal"
+            />
+            <img src="@/assets/icons/left.svg" alt="left" />
+          </label>
+          <label>
+            <input
+              type="radio"
+              v-model="state.currentSection.justifyContent"
+              value="center"
+              name="horizontal"
+            />
+            <img src="@/assets/icons/center.svg" alt="center" />
+          </label>
+          <label>
+            <input
+              type="radio"
+              v-model="state.currentSection.justifyContent"
+              value="flex-end"
+              name="horizontal"
+            />
+            <img src="@/assets/icons/right.svg" alt="right" />
+          </label>
+          <label>
+            <input
+              type="radio"
+              v-model="state.currentSection.alignItems"
+              value="flex-start"
+              name="vertical"
+            />
+            <img src="@/assets/icons/top.svg" alt="top" />
+          </label>
+          <label>
+            <input
+              type="radio"
+              v-model="state.currentSection.alignItems"
+              value="center"
+              name="vertical"
+            />
+            <img src="@/assets/icons/middle.svg" alt="middle" />
+          </label>
+          <label>
+            <input
+              type="radio"
+              v-model="state.currentSection.alignItems"
+              value="flex-end"
+              name="vertical"
+            />
+            <img src="@/assets/icons/bottom.svg" alt="bottom" />
+          </label>
+        </div>
       </div>
     </div>
   </div>
@@ -89,8 +119,26 @@ export default {
   position: absolute;
   background: turquoise;
   border-bottom: 1px dotted grey;
-  margin-top: 10px;
-  margin-left: 5px;
   padding-bottom: 5px;
+}
+
+/* HIDE RADIO */
+input[type="radio"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+input[type="radio"] + img {
+  max-width: 40px;
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+input[type="radio"]:checked + img,
+/* For accessibility tabbing- tab selects group, navigate with left/right keys */
+input[type="radio"]:focus + img {
+  outline: 2px solid rgb(78, 70, 70);
 }
 </style>
