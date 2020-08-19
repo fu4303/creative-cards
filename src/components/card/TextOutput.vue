@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <p
-      :style="cssObject"
-      :class="{ bold: section.isBold, italic: section.isItalic }"
-    >{{ section.userInput }}</p>
-  </div>
+  <p
+    :style="cssObject"
+    :class="{ bold: section.isBold, italic: section.isItalic }"
+  >{{ section.userInput }}</p>
 </template>
 
 <script>

@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <router-link to="/"> Home</router-link>
-    <router-link :to="`/create/${id}/front`">Create </router-link>
-  </div>
+  <router-link to="/">Home</router-link>
+  <router-link :to="`/create/${id}/front`">Create</router-link>
 </template>
 
 <script>
