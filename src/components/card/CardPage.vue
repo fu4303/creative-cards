@@ -42,7 +42,7 @@ export default {
     page: Object,
   },
 
-  setup(props, context) {
+  setup(props) {
     let state = reactive({
       page: {},
     });

@@ -3,7 +3,7 @@
     <button>Reset Card</button>
     <button>Download</button>
   </header>
-  <div v-for="page in state.currentCard.pages" :key="page">
+  <!-- <div v-for="page in state.currentCard.pages" :key="page">
     <ul>
       <li>
         {{page.name}}
@@ -12,7 +12,7 @@
         </ul>
       </li>
     </ul>
-  </div>
+  </div>-->
   <div>
     <router-link to="front">Front</router-link>
     <router-link to="inside-left">Inside Left</router-link>
