@@ -20,7 +20,7 @@
     <router-link to="back">Back</router-link>
   </div>
   <card-page :page="state.currentCard.pages[getPageIndex()]"></card-page>
-
+  <button @click="apiCall">api call</button>
   <!-- output card sections with dynamic slot? https://vuejs.org/v2/guide/components-slots.html#Dynamic-Slot-Names -->
 </template>
 
@@ -57,6 +57,7 @@ export default {
     return {
       state,
       getPageIndex,
+      apiCall,
     };
   },
   components: {
