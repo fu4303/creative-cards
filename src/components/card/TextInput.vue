@@ -83,7 +83,6 @@
 import { reactive, watchEffect } from "vue";
 export default {
   props: ["section"],
-  emits: ["updatedSection"],
   setup(props) {
     let state = reactive({
       currentSection: {},

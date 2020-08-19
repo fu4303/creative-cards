@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { reactive, watchEffect, onMounted } from "vue";
+import { reactive, watchEffect } from "vue";
 
 import TextInput from "./TextInput.vue";
 import TextOutput from "./TextOutput.vue";
@@ -41,13 +41,8 @@ export default {
   props: {
     page: Object,
   },
-  emits: ["page"],
 
   setup(props, context) {
-    onMounted(() => {
-      // emit page data to parent, this will also be binded for future updates to the page
-      context.emit("page", state.page);
-    });
     let state = reactive({
       page: {},
     });
