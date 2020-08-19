@@ -58,10 +58,9 @@ export default {
     });
 
     function getOccurrences(componentType) {
-      var count = 0;
-      // if (state.page.sections.length === 0) return 1;
+      var count = 1;
       state.page.sections.forEach(
-        (section) => section.type === componentType + count++
+        (section) => section.type === componentType && count++
       );
       return count;
     }
