@@ -54,6 +54,19 @@ export default {
       return pages.indexOf(route.params.path);
     }
 
+    async function apiCall() {
+      const url =
+        "https://vibrant-ptolemy-3d24a2.netlify.app/.netlify/functions/card-create";
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log({ data });
+        return data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
     return {
       state,
       getPageIndex,
