@@ -30,6 +30,8 @@ import { useRoute } from "vue-router";
 import { cards } from "../data";
 import CardPage from "../components/card/CardPage";
 
+// import axios from "axios";
+
 export default {
   setup() {
     const route = useRoute();
@@ -55,16 +57,25 @@ export default {
     }
 
     async function apiCall() {
-      const url =
-        "https://vibrant-ptolemy-3d24a2.netlify.app/.netlify/functions/card-create";
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log({ data });
-        return data;
-      } catch (err) {
-        console.log(err);
-      }
+      // const url = "/functions/card-create";
+      // axios
+      //   .get(url)
+      //   .then(function(response) {
+      //     console.log(response);
+      //   })
+      //   .catch(function(error) {
+      //     console.log(error);
+      //   });
+
+      // const response = await fetch(url);
+      // const data = await response.json();
+      // console.log({ data });
+      // return data;
+      fetch("/.netlify/functions/hello-world")
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json.msg);
+        });
     }
 
     return {
