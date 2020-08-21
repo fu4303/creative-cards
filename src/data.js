@@ -1,12 +1,3 @@
-export const categories = [
-  "all",
-  "birthday",
-  "wedding",
-  "husband",
-  "wife",
-  "anniversary",
-];
-
 export const cards = [
   {
     id: 1,
