@@ -1,9 +1,12 @@
 <template>
   <div class="card_wrapper">
     <!-- left -->
-    <section :style="{
-          backgroundImage: `url(${page.background})`,
-        }">
+    <section
+      :style="{
+        backgroundImage: `url(${page.background})`,
+        backgroundSize: 'cover',
+      }"
+    >
       <div v-for="section in state.page.sections" :key="section.uniqueRef">
         <component :is="section.type + 'Output'" :section="section"></component>
       </div>
@@ -14,7 +17,10 @@
         <button @click="addSection('Text')">text</button>
         <button @click="addSection('Image')">image</button>
       </div>
-      <div v-for="(section, index) in state.page.sections" :key="section.uniqueRef">
+      <div
+        v-for="(section, index) in state.page.sections"
+        :key="section.uniqueRef"
+      >
         <button @click="removeSection(section)">x</button>
         <component
           :is="section.type + 'Input'"
