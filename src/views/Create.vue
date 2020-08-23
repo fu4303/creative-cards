@@ -3,16 +3,6 @@
     <button>Reset Card</button>
     <button>Download</button>
   </header>
-  <!-- <div v-for="page in state.currentCard.pages" :key="page">
-    <ul>
-      <li>
-        {{page.name}}
-        <ul v-for="section in page.sections" :key="section">
-          <li>{{section}}</li>
-        </ul>
-      </li>
-    </ul>
-  </div>-->
   <div>
     <router-link to="front">Front</router-link>
     <router-link to="inside-left">Inside Left</router-link>

@@ -2,9 +2,9 @@
   <li
     class="preview_wrapper"
     :style="{
-        backgroundImage: `url(${card.pages[0].background})`,
-        backgroundSize: 'cover'
-      }"
+      backgroundImage: `url(${card.pages[0].background})`,
+      backgroundSize: 'cover',
+    }"
   >
     <router-link :to="`/create/${card.id}/front`">
       <p>{{ card.name }}</p>

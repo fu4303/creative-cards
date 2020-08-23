@@ -2,9 +2,9 @@
   <div class="card_wrapper">
     <!-- left -->
     <section
+      class="card_display"
       :style="{
         backgroundImage: `url(${page.background})`,
-        backgroundSize: 'cover',
       }"
     >
       <div v-for="section in state.page.sections" :key="section.uniqueRef">
@@ -97,5 +97,11 @@ export default {
 .card_wrapper > section {
   margin: 0 1rem;
   width: 100%;
+}
+
+.card_display {
+  width: 500px;
+  height: 700px;
+  background-size: cover;
 }
 </style>

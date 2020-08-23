@@ -2,7 +2,9 @@
   <p
     :style="cssObject"
     :class="{ bold: section.isBold, italic: section.isItalic }"
-  >{{ section.userInput }}</p>
+  >
+    {{ section.userInput }}
+  </p>
 </template>
 
 <script>
@@ -19,17 +21,17 @@ export default {
         justifyContent: this.section.justifyContent,
         alignItems: this.section.alignItems,
         color: this.section.color,
+        background: this.section.background || "transparent",
       };
     },
   },
 };
 </script>
 
-
 <style scoped>
 p {
-  font-size: 42px;
-  margin: 5px 0;
+  /* font-size: 42px; */
+  margin: 0;
   border: 1px dotted grey;
   white-space: pre-line;
   overflow: hidden;
