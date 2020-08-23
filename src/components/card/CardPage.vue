@@ -1,13 +1,14 @@
 <template>
   <div class="card_wrapper">
     <!-- left -->
+
     <section
       class="card_display"
       :style="{
         backgroundImage: `url(${page.background})`,
       }"
     >
-      <div v-for="section in state.page.sections" :key="section.uniqueRef">
+      <div v-for="section in state.sortedSections" :key="section.uniqueRef">
         <component :is="section.type + 'Output'" :section="section"></component>
       </div>
     </section>
@@ -18,7 +19,7 @@
         <button @click="addSection('Image')">image</button>
       </div>
       <div
-        v-for="(section, index) in state.page.sections"
+        v-for="(section, index) in state.sortedSections"
         :key="section.uniqueRef"
       >
         <button @click="removeSection(section)">x</button>
@@ -33,7 +34,7 @@
 </template>
 
 <script>
-import { reactive, watchEffect } from "vue";
+import { reactive, watchEffect, onMounted } from "vue";
 
 import TextInput from "./TextInput.vue";
 import TextOutput from "./TextOutput.vue";
@@ -49,8 +50,15 @@ export default {
   },
 
   setup(props) {
+    onMounted(() => {
+      state.sortedSections = [...state.page.sections].sort((a, b) =>
+        a.position > b.position ? 1 : -1
+      );
+    });
+
     let state = reactive({
       page: {},
+      sortedSections: [],
     });
 
     watchEffect(() => {
