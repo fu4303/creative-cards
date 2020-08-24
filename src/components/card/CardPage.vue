@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { reactive, watchEffect, onMounted } from "vue";
+import { reactive, watchEffect } from "vue";
 
 import TextInput from "./TextInput.vue";
 import TextOutput from "./TextOutput.vue";
@@ -50,12 +50,6 @@ export default {
   },
 
   setup(props) {
-    onMounted(() => {
-      state.sortedSections = [...state.page.sections].sort((a, b) =>
-        a.position > b.position ? 1 : -1
-      );
-    });
-
     let state = reactive({
       page: {},
       sortedSections: [],
@@ -64,6 +58,11 @@ export default {
     watchEffect(() => {
       // props initially comes in as undefined
       state.page = props.page || {};
+
+      // watches for section re positioning and updates
+      state.sortedSections = [...state.page.sections].sort((a, b) =>
+        a.position > b.position ? 1 : -1
+      );
     });
 
     function getOccurrences(componentType) {
