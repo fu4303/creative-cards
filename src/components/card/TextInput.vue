@@ -5,8 +5,8 @@
   >
     {{ state.currentSection }}
     <h4>Edit Text:</h4>
-    <button @click="moveUp">up</button>
-    <button @click="moveDown">down</button>
+    <button @click="move('up')">up</button>
+    <button @click="move('down')">down</button>
     <textarea
       rows="4"
       cols="50"
@@ -119,14 +119,15 @@ export default {
     // refactor to one function
     // use to add to the 4 slots on the card not to reorder
     // emit to parent to place in correct slot
-    function moveUp() {
-      state.currentSection.position++;
-    }
-    function moveDown() {
-      state.currentSection.position--;
+    function move(direction) {
+      if (direction === "up" && state.currentSection.position !== 1) {
+        state.currentSection.position--;
+      } else if (direction === "down" && state.currentSection.position !== 3) {
+        state.currentSection.position++;
+      }
     }
 
-    return { state, keepOpen, moveUp, moveDown };
+    return { state, keepOpen, move };
   },
 };
 </script>

@@ -1,19 +1,41 @@
 <template>
   <div class="card_wrapper">
     <!-- left -->
-
     <section
       class="card_display"
       :style="{
         backgroundImage: `url(${page.background})`,
       }"
     >
-      <div v-for="section in state.sortedSections" :key="section.uniqueRef">
+      <!-- <div v-for="section in state.sortedSections" :key="section.uniqueRef">
         <component :is="section.type + 'Output'" :section="section"></component>
-      </div>
+      </div> -->
+
+      <section-grid>
+        <template #section1>
+          <component
+            :is="state.sortedSections[0]?.type + 'Output'"
+            :section="state.sortedSections[0]"
+          ></component>
+        </template>
+        <template #section2>
+          <component
+            :is="state.sortedSections[1]?.type + 'Output'"
+            :section="state.sortedSections[1]"
+          ></component>
+        </template>
+        <template #section3>
+          <component
+            :is="state.sortedSections[2]?.type + 'Output'"
+            :section="state.sortedSections[2]"
+          ></component>
+        </template>
+      </section-grid>
     </section>
     <!-- right -->
     <section>
+      <p v-if="state.message">{{ state.message }}</p>
+
       <div>
         <button @click="addSection('Text')">text</button>
         <button @click="addSection('Image')">image</button>
@@ -40,6 +62,7 @@ import TextInput from "./TextInput.vue";
 import TextOutput from "./TextOutput.vue";
 import ImageInput from "./ImageUpload.vue";
 import ImageOutput from "./ImageOutput.vue";
+import SectionGrid from "./SectionGrid.vue";
 
 // TODO / Ideas
 // Animate in sections when adding
@@ -53,6 +76,7 @@ export default {
     let state = reactive({
       page: {},
       sortedSections: [],
+      message: "",
     });
 
     watchEffect(() => {
@@ -74,11 +98,17 @@ export default {
     }
 
     function addSection(type) {
+      if (state.sortedSections.length >= 3) {
+        state.message = "Only 3 sections allowed per page";
+        return;
+      }
       const newSection = {
         type,
         uniqueRef: `${type}${getOccurrences(type)}`,
         userInput: type === "Text" ? "Enter your text here" : "",
       };
+      // reset any previous message
+      state.message = "";
       state.page.sections.push(newSection);
     }
 
@@ -92,7 +122,7 @@ export default {
     return { state, addSection, removeSection };
   },
 
-  components: { TextInput, ImageInput, TextOutput, ImageOutput },
+  components: { TextInput, ImageInput, TextOutput, ImageOutput, SectionGrid },
 };
 </script>
 

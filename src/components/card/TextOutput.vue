@@ -1,6 +1,5 @@
 <template>
   <p
-    draggable="true"
     :style="cssObject"
     :class="{ bold: section.isBold, italic: section.isItalic }"
   >
